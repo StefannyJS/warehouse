@@ -19,22 +19,6 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Dropdown Role -->
-        <div class="mt-4">
-            <x-input-label for="role" :value="__('Select Role')" />
-            <select id="role" name="role" required class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
-                <option value="">-- Select Role --</option>
-                @foreach($roles as $role)
-                    <option value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
-                @endforeach
-            </select>
-            @error('role')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
@@ -44,11 +28,11 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
+            <!-- @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
-            @endif
+            @endif -->
 
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}

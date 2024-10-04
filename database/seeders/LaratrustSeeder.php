@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use User;
+use Role;
 
 class LaratrustSeeder extends Seeder
 {
@@ -68,7 +70,7 @@ class LaratrustSeeder extends Seeder
                     'email' => $key.'@app.com',
                     'password' => bcrypt('password')
                 ]);
-                $user->addRole($role);
+                $user->roles()->attach($role->id);
             }
 
         }

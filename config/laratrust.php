@@ -224,6 +224,7 @@ return [
                 'message' => [
                     'key' => 'error',
                     'content' => '',
+                    'web', 'auth', 'super-admin'
                 ],
             ],
         ],

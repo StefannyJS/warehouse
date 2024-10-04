@@ -1,3 +1,149 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Styling untuk dropdown panjang */
+.dataTables_length select {
+    appearance: none; /* Hapus panah default */
+    -moz-appearance: none; /* Hapus panah di Firefox */
+    -webkit-appearance: none; /* Hapus panah di Safari */
+    background: #fff; /* Warna background */
+    border: 1px solid #ccc; /* Tambahkan border */
+    padding: 6px 12px; /* Padding lebih besar untuk konsistensi */
+    border-radius: 4px; /* Sudut membulat */
+    margin-left: 10px; /* Jarak antara dropdown dan label */
+    width: auto; /* Lebar otomatis */
+    transition: border-color 0.3s; /* Efek transisi saat focus */
+}
+
+/* Efek saat dropdown di-focus */
+.dataTables_length select:focus {
+    border-color: #2563eb; /* Warna biru saat focus */
+    outline: none; /* Hapus outline default */
+}
+
+/* Styling untuk container length */
+.dataTables_length {
+    display: flex;
+    align-items: center; /* Rata tengah secara vertikal */
+    margin-bottom: 10px; /* Tambahkan margin bawah */
+}
+
+/* Styling label length */
+.dataTables_length label {
+    margin-right: 10px; /* Tambahkan jarak antara label dan dropdown */
+}
+
+
+.table th {
+    background-color: #f9fafb; /* Warna latar belakang header */
+    color: #1f2937; /* Warna teks header */
+    padding: 12px; /* Padding header */
+    text-align: left; /* Rata tengah teks */
+    font-weight: bold; /* Menebalkan teks header */
+}
+
+/* Styling baris genap */
+.table tr:nth-child(even) {
+    background-color: #f3f4f6; /* Warna latar belakang untuk baris genap */
+}
+
+/* Hover effect untuk baris tabel */
+.table tr:hover {
+    background-color: #e5e7eb; /* Warna latar belakang saat hover */
+}
+
+/* Styling untuk input pencarian */
+.dataTables_filter input {
+    padding: 6px 12px; /* Padding lebih besar untuk konsistensi */
+    margin-left: 5px; /* Tambahkan sedikit ruang di sebelah kiri input */
+    border-radius: 4px; /* Tambahkan sudut membulat */
+    border: 1px solid #ccc; /* Border untuk input */
+    transition: border-color 0.3s; /* Efek transisi saat focus */
+}
+
+/* Efek saat input di-focus */
+.dataTables_filter input:focus {
+    border-color: #2563eb; /* Warna biru saat focus */
+    outline: none; /* Hapus outline default */
+}
+
+/* Menambahkan margin bawah untuk filter */
+.dataTables_filter {
+    margin-bottom: 10px; /* Tambahkan margin bawah */
+}
+
+/* Gaya dasar untuk semua tombol */
+.btn {
+    padding: 8px 12px; /* Padding seragam */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem; /* Ukuran font yang sama */
+    font-weight: bold;
+    color: white;
+    display: inline-flex; /* Menggunakan inline-flex agar ikon dan teks rata */
+    align-items: center; /* Ikon dan teks rata tengah secara vertikal */
+    justify-content: center; /* Rata tengah horizontal */
+    transition: background-color 0.3s; /* Efek hover */
+}
+
+/* Variasi untuk tombol Edit */
+.btn-edit {
+    background-color: #f7b124; /* Warna latar belakang untuk edit */
+}
+
+.btn-cells {
+    background-color: #04AA6D; /* Warna latar belakang untuk edit */
+}
+
+/* Hover effect untuk tombol Edit */
+.btn-edit:hover {
+    background-color: #de9f20; /* Warna saat hover untuk edit */
+}
+
+/* Variasi untuk tombol Delete */
+.btn-delete {
+    background-color: #ef4444; /* Warna latar belakang untuk delete */
+}
+
+/* Hover effect untuk tombol Delete */
+.btn-delete:hover {
+    background-color: #dc2626; /* Warna saat hover untuk delete */
+}
+
+/* Variasi untuk tombol Save */
+.btn-save {
+    background-color: #3b82f6; /* Warna latar belakang untuk save */
+}
+
+/* Hover effect untuk tombol Save */
+.btn-save:hover {
+    background-color: #2563eb; /* Warna saat hover untuk save */
+}
+
+/* Variasi untuk tombol Cancel */
+.btn-cancel {
+    background-color: #9ca3af; /* Warna latar belakang untuk cancel */
+}
+
+/* Hover effect untuk tombol Cancel */
+.btn-cancel:hover {
+    background-color: #6b7280; /* Warna saat hover untuk cancel */
+}
+
+
+
+/* Styling untuk kolom actions */
+.actions-column {
+    width: 250px; /* Sesuaikan lebar yang diinginkan */
+    text-align: center; /* Agar konten berada di tengah */
+}
+
+.actions-column .btn {
+    margin: 3px; /* Memberikan sedikit jarak antar tombol */
+    padding: 5px 10px; /* Sesuaikan padding agar tombol tidak terlalu besar */
+}

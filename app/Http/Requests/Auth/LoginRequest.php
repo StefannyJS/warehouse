@@ -31,7 +31,6 @@ class LoginRequest extends FormRequest
         return [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
-            'role' => ['required', 'exists:roles,name'], // Validasi role
         ];
     }
 
@@ -41,35 +40,25 @@ class LoginRequest extends FormRequest
      * @throws \Illuminate\Validation\ValidationException
      */
     public function authenticate(): void
-    {
-        $this->ensureIsNotRateLimited();
+{
+    $this->ensureIsNotRateLimited();
 
-        // Ambil input email, password, dan role
-        $credentials = $this->only('email', 'password');
-        $role = $this->input('role'); // Ambil role dari input
+    // Ambil input email dan password
+    $credentials = $this->only('email', 'password');
 
-        // Lakukan otentikasi menggunakan email dan password
-        if (! Auth::attempt($credentials, $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+    // Lakukan otentikasi menggunakan email dan password
+    if (! Auth::attempt($credentials, $this->boolean('remember'))) {
+        RateLimiter::hit($this->throttleKey());
 
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
-            ]);
-        }
-
-        // Cek apakah user yang sedang login memiliki role yang dipilih
-        $user = Auth::user();
-        if (! $user->hasRole($role)) {
-            Auth::logout(); // Logout user jika tidak sesuai role
-
-            throw ValidationException::withMessages([
-                'role' => 'Role tidak sesuai.',
-            ]);
-        }
-
-        // Jika autentikasi dan role sesuai, hapus rate limiter key
-        RateLimiter::clear($this->throttleKey());
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed'),
+        ]);
     }
+
+    // Jika login berhasil, clear rate limiter
+    RateLimiter::clear($this->throttleKey());
+}
+
 
     /**
      * Ensure the login request is not rate limited.

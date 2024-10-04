@@ -7,12 +7,21 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
-        "alpinejs": "^3.4.2",
+        "alpinejs": "^3.14.1",
         "autoprefixer": "^10.4.2",
         "axios": "^1.7.4",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.31",
         "tailwindcss": "^3.1.0",
         "vite": "^5.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.6.0",
+        "@types/jquery": "^3.5.31",
+        "datatables.net": "^1.13.11",
+        "datatables.net-bs4": "^2.1.7",
+        "datatables.net-dt": "^1.13.11",
+        "jquery": "^3.7.1",
+        "sweetalert2": "^11.14.1"
     }
 }
