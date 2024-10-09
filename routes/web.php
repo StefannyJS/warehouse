@@ -11,6 +11,11 @@ use App\Http\Controllers\UomController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\StorageController;
 use App\http\controllers\CellController;
+use App\Http\Controllers\StockInController;
+use App\Http\Controllers\StockOutController;
+use App\Http\Controllers\StockTransferController;
+use App\Http\Controllers\StockConversionController;
+use App\Http\Controllers\AdjustmentController;
 
 // Login route
 Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -48,6 +53,7 @@ Route::middleware(['auth', 'role:super-admin'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/materials/data', [MaterialController::class, 'data'])->name('materials.data');
     Route::resource('/materials', MaterialController::class);
+    Route::get('/materials/active', [MaterialController::class, 'getActiveMaterials'])->name('materials.active');
 });
 
 // Routes for UOMs
@@ -79,6 +85,32 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('cells/{cell}', [CellController::class, 'destroy'])->name('cells.destroy');
     });
 });
+
+// Routes for Stock in
+Route::middleware(['auth'])->group(function () {
+    Route::get('/stock-in/data', [StockInController::class, 'data'])->name('stock-in.data');
+    Route::resource('stock-in', StockInController::class)->except(['show']);
+
+});
+
+// Routes for stock in no.
+Route::get('/stock-in/generate-number', [StockInController::class, 'generateStockInNoApi'])->name('stock-in.generate-number');
+
+
+// Routes for stock out
+Route::resource('stock-out', StockOutController::class);
+
+
+// Routes for stock transfer
+Route::resource('stock-transfer', StockTransferController::class);
+
+
+// Routes for stock conversion
+Route::resource('stock-conversion', StockConversionController::class);
+
+
+// Routes for adjustment
+Route::resource('adjustment', AdjustmentController::class);
 
 
 // Authentication routes

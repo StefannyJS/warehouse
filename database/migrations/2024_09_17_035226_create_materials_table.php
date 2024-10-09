@@ -15,8 +15,8 @@ class CreateMaterialsTable extends Migration
             $table->string('unit_of_measure', 10);
             $table->integer('status')->default(1); // 1 = Active, 0 = Deleted
             $table->string('created_by', 50);
-            $table->timestamps(0); // Use current timestamp without fractional seconds
-            $table->string('updated_by', 50)->nullable(); // Nullable to allow empty on creation
+            $table->timestamps(0);
+            $table->string('updated_by', 50)->nullable();
         });
     }
 

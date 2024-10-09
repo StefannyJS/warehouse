@@ -97,7 +97,6 @@
     <!-- JavaScript -->
     <script>
     $(document).ready(function() {
-        // Inisialisasi DataTables
         var cellsDataUrl = $('#cells-table').data('url');
         var table = $('#cells-table').DataTable({
             processing: true,

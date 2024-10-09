@@ -121,23 +121,36 @@ class MaterialController extends Controller
     }
 
     public function destroy($id)
-{
-    try {
-        // Cari material berdasarkan id
-        $material = DB::table('m_material')->where('id_material', $id)->first();
+    {
+        try {
+            // Cari material berdasarkan id
+            $material = DB::table('m_material')->where('id_material', $id)->first();
 
-        if (!$material) {
-            return response()->json(['error' => 'Material tidak ditemukan.'], 404);
+            if (!$material) {
+                return response()->json(['error' => 'Material tidak ditemukan.'], 404);
+            }
+
+            DB::table('m_material')
+                ->where('id_material', $id)
+                ->update(['status' => 0]);
+
+            return response()->json(['success' => 'Material has been successfully deactivated.']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to deactivate material: ' . $e->getMessage()], 500);
         }
-
-        DB::table('m_material')
-            ->where('id_material', $id)
-            ->update(['status' => 0]);
-
-        return response()->json(['success' => 'Material has been successfully deactivated.']);
-    } catch (\Exception $e) {
-        return response()->json(['error' => 'Failed to deactivate material: ' . $e->getMessage()], 500);
     }
-}
+
+    public function getActiveMaterials()
+    {
+        // Mengambil data material dengan status 1 (aktif)
+        $materials = DB::table('m_material')
+            ->select('id_material', 'description')
+            ->where('status', 1)
+            ->get();
+
+        // Mengembalikan data dalam format JSON yang akan digunakan oleh Select2
+        return response()->json($materials);
+    }
+
 
 }

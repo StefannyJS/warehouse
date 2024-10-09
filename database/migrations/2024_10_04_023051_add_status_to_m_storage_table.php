@@ -15,7 +15,7 @@ class AddStatusToMStorageTable extends Migration
     {
         Schema::table('m_storage', function (Blueprint $table) {
             // Menambahkan kolom status dengan default 1 (aktif)
-            $table->integer('status')->default(1)->after('description');
+            //$table->integer('status')->default(1)->after('description');
         });
     }
 
